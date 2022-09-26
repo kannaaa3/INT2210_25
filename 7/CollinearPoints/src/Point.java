@@ -3,8 +3,8 @@ import edu.princeton.cs.algs4.StdDraw;
 import java.util.Comparator;
 
 public class Point implements Comparable<Point> {
-    public final int x;     // x-coordinate of this point
-    public final int y;     // y-coordinate of this point
+    private final int x;     // x-coordinate of this point
+    private final int y;     // y-coordinate of this point
 
     /**
      * Initializes a new point.
@@ -40,11 +40,11 @@ public class Point implements Comparable<Point> {
     public double slopeTo(Point that) {
         /* YOUR CODE HERE */
         // the slope between this point and that point
-        double yy = that.y - this.y;
-        double xx = that.x - this.x;
+        if (this.x == that.x)
+            return (this.y == that.y) ? Double.NEGATIVE_INFINITY : Double.POSITIVE_INFINITY;
+        if (this.y == that.y) return 0.0;
 
-        if (xx == 0) return (yy == 0) ? Double.NEGATIVE_INFINITY : Double.POSITIVE_INFINITY;
-        return yy / xx;
+        return (double) (this.y - that.y) / (this.x - that.x);
     }
 
     /**
@@ -68,15 +68,14 @@ public class Point implements Comparable<Point> {
      * argument point
      */
     public int compareTo(Point that) {
-        if(that == null) throw new IllegalArgumentException();
         return this.y == that.y ? this.x - that.x : this.y - that.y;
     }
 
     public Comparator<Point> slopeOrder() {
         return (point1, point2) -> {
             double cmp = this.slopeTo(point1) - this.slopeTo(point2);
-            if(cmp > 0) return 1;
-            if(cmp < 0) return -1;
+            if (cmp > 0) return 1;
+            if (cmp < 0) return -1;
             return 0;
         };
     }

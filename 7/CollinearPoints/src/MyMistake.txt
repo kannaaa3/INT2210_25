@@ -1,0 +1,8 @@
+I assumed that points[] is not null.
+    * Fix: check it and thr
+I sorted the array before checking whether it contains a null value or not.
+    * Fix: check it and thr
+I returned the entire array of my class without acknowledging that it could be mutated by the caller.
+    * Fix: return the copy of it
+I put some redundant IllegalArgumentExceptions which causes the program return the wrong value.
+    * Fix: remove the line code
