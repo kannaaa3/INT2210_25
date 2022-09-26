@@ -1,5 +1,4 @@
 import java.util.Iterator;
-import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 public class Deque<Item> implements Iterable<Item> {
@@ -14,6 +13,7 @@ public class Deque<Item> implements Iterable<Item> {
         Node prev;
         Node next;
     }
+
 
     // construct an empty deque
     public Deque() {
@@ -104,14 +104,14 @@ public class Deque<Item> implements Iterable<Item> {
 
     // return an iterator over items in order from front to back
     public Iterator<Item> iterator() {
-        return new ListIterator();
+        return new DequeIterator();
     }
 
-    private class ListIterator implements Iterator<Item> {
+    private class DequeIterator implements Iterator<Item> {
         private Node current = first;
 
         public boolean hasNext() {
-            return current.next != null;
+            return current != null;
         }
 
         public Item next() {

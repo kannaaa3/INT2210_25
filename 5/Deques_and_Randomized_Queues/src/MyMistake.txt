@@ -1,0 +1,7 @@
+My method hasNext() was wrong due to my misconception that the last available item does not hasNext (actually its Next was the null end iterator)
+  * Fix: just change it
+Since my iterator change the Class's array DIRECTLY and I shuffle the array every iteration, the program FAILED when they call 2 nested iteration or two parallel iterators.
+  * Fix: create a copy of the array inside the iterator() method
+
+
+

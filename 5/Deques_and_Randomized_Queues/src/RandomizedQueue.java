@@ -46,7 +46,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         int  ranId   = StdRandom.uniformInt(n);
         Item oldItem = q[ranId];
 
-        if (ranId != n - 1) q[ranId] = q[n - 1]; //swap the last element and q[id]
+        if (ranId != n - 1) q[ranId] = q[n - 1];
 
         q[n - 1] = null;
         n--;
@@ -68,15 +68,13 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
     private class RandomizedQueueIterator implements Iterator<Item> {
         private int    current  = 0;
-        private Item[] randomIt = (Item[]) new Object[n];
+        private Item[] randOrder = (Item[]) new Object[n];
 
         public RandomizedQueueIterator() {
-            for (int i = 0; i < n; i++) randomIt[i] = q[i];
-            StdRandom.shuffle(randomIt);
             for (int i = 0; i < n; i++) {
-                q[i] = randomIt[i];
+                randOrder[i] = q[i];
             }
-
+            StdRandom.shuffle(randOrder, 0, n);
         }
 
         public boolean hasNext() {
@@ -85,7 +83,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
         public Item next() {
             if (!hasNext()) throw new NoSuchElementException();
-            return q[current++];
+            return randOrder[current++];
         }
 
         public void remove() {
@@ -97,52 +95,28 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         return new RandomizedQueueIterator();
     }
 
-//    public String toString() {
-//        String ans = "[";
-//        for (int i = 0; i < n; i++) {
-//            ans += q[i] + ", ";
-//        }
-//        ans += "]";
-//        return ans;
-//    }
-
     // unit testing (required)
     public static void main(String[] args) {
         RandomizedQueue<Integer> m = new RandomizedQueue<>();
-        m.enqueue(1);
-        m.dequeue();
-        m.enqueue(2);
-        m.enqueue(3);
+        m.enqueue(1); m.dequeue();
+        m.enqueue(2); m.enqueue(3);
         System.out.println(m.dequeue());
-        ;
         System.out.println(m);
-        m.enqueue(4);
-        m.enqueue(5);
+        m.enqueue(4); m.enqueue(5);
         m.dequeue();
         System.out.println(m);
-        m.enqueue(6);
-        m.dequeue();
-        m.enqueue(7);
+        m.enqueue(6); m.dequeue(); m.enqueue(7);
         System.out.println(m);
 
         for (Integer s : m)
             System.out.print(s + ", ");
-//        System.out.println();
-//        for (Integer s : m)
-//            System.out.print(s + ", ");
-//        System.out.println();
-//        for (Integer s : m)
-//            System.out.print(s + ", ");
-//        System.out.println();
-//        for (Integer s : m)
-//            System.out.print(s + ", ");
-//        System.out.println();
-//        for (Integer s : m)
-//            System.out.print(s + ", ");
-//        System.out.println();
-//        for (Integer s : m)
-//            System.out.print(s + ", ");
-
+        System.out.println("");
+        for (Integer s : m)
+            System.out.print(s + ", ");
+        System.out.println("");
+        for (Integer s : m)
+            System.out.print(s + ", ");
+        System.out.println("");
     }
 
 }
