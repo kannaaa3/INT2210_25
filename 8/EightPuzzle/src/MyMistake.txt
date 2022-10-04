@@ -1,0 +1,7 @@
+Comparing 2 Board by writing b == head.traceNode.board (which should be replaced by `equals`), so it kept adding the previous Node to the PQ.
+    - Fix: using `equals` then
+Still forgot to make some fields private.
+
+New things I've learnt: (Why is this even possible !?)
+    Comparator<Node> cmpPriority = Comparator.comparingInt(b -> b.priority);
+
