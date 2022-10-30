@@ -1,0 +1,2 @@
+- I put dis != 1 but it could be 0 which leads to wrong answer
+- I made a simple mistake, that is dX * dX + dY * dY. This is unforgivable.
