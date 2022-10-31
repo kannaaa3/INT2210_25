@@ -1,0 +1,5 @@
+- I did a typo mistake: dis == -1 but it sould be !=
+- Some how it failed since i split using regex("\n"), which causes IndexOutOfBound...
+- I didn't know that I cannot mutate the value in Map. I need to put a new one.
+- Why this.G = new Digraph(G) instead of just put it G? I see. It points to G.
+- I made a mistake when detecting whether G is Rooted DAG or not. Why?
